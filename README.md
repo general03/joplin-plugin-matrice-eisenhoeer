@@ -39,3 +39,4 @@ Inside you can see :
 
 - Generate the build package : `npm run dist`
 - Get the dev app command to test : "Help / Copy dev mode command to clipboard"
+- Add `--no-sandbox` option in previous command if needed
