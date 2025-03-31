@@ -80,7 +80,11 @@ joplin.plugins.register({
 				// Check the date
 				const dueDate = line.match(/^.*\@([0-9\/]*)/);
 				let dateReturned 
-				if(dueDate) dateReturned = new Date(`${dueDate[1]}/${new Date().getFullYear()}`)
+				if (dueDate){
+					let day_month = dueDate[1].split('/')
+
+					if(day_month) dateReturned = new Date(new Date().getFullYear(), parseInt(day_month[1])-1, parseInt(day_month[0]))
+				}
 
 				//Check tag important
 				const important = line.match(/^.*(#important).*/);
