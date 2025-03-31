@@ -18,11 +18,11 @@ joplin.plugins.register({
 			}
 
 			// Get all notes from tag id
-			const note = await joplin.data.get(['tags', tag_id_matrice_eisenhower, 'notes'], { fields: ['id', 'title', 'body']});
+			const note = await joplin.data.get(['tags', tag_id_matrice_eisenhower, 'notes'], { fields: ['id', 'title', 'body', 'parent_id']});
 			for (const todo of note.items){
 				// Create Eisenhower note page
 				let currentDate = new Date().toJSON().slice(0, 10);
-				await joplin.data.post(['notes'], 0, { title: `Matrice Eisenhower - ${currentDate} : ${todo.title}`, body: organizeTask(todo) });
+				await joplin.data.post(['notes'], 0, { title: `Matrice Eisenhower - ${currentDate} : ${todo.title}`, body: organizeTask(todo), parent_id: todo.parent_id});
 			}
         }
 
