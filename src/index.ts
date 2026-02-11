@@ -6,25 +6,29 @@ joplin.plugins.register({
 		console.info('Plugin Matrice Eisenhower started !');
 
 		async function generateMatrice() {
+			console.info('Plugin Matrice Eisenhower : generating Matrice !');
 			// Get tag id from name
 			const tags_note = await joplin.data.get(['tags']);
 			let tag_id_matrice_eisenhower = "";
+			console.info("Tags list", tags_note)
 
 			for (const tag of tags_note.items){
 				if (tag.title == "matrice_eisenhower") {
 					tag_id_matrice_eisenhower = tag.id;
-					break;
+					// break; // Comment because I got duplicate tag name, I do not know why ? 
 				}
 			}
 
 			// Get all notes from tag id
 			const note = await joplin.data.get(['tags', tag_id_matrice_eisenhower, 'notes'], { fields: ['id', 'title', 'body', 'parent_id']});
+			console.info("Notes list", note);
+
 			for (const todo of note.items){
 				// Create Eisenhower note page
 				let currentDate = new Date().toJSON().slice(0, 10);
 				await joplin.data.post(['notes'], 0, { title: `Matrice Eisenhower - ${currentDate} : ${todo.title}`, body: organizeTask(todo), parent_id: todo.parent_id});
 			}
-        }
+		}
 
 		function organizeTask(note){
 			const extract_data = extractTodo(note.body)
@@ -99,6 +103,7 @@ joplin.plugins.register({
 			return extract_data;
 		}
 
-		generateMatrice();
+		console.info('Call function generateMatrice() !');
+		await generateMatrice();
 	},
 });

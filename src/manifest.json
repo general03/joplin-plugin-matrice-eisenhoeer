@@ -2,14 +2,22 @@
 	"manifest_version": 1,
 	"id": "io.github.general03.matrice-eisenhoeer",
 	"app_min_version": "2.13",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "Matrice Eisenhower",
 	"description": "Create Eisenhower Matrice from TODO page",
 	"author": "David RIGAUDIE",
 	"homepage_url": "",
 	"repository_url": "https://github.com/general03/joplin-plugin-matrice-eisenhoeer",
-	"keywords": ["eisenhower", "gtd", "urgent", "important"],
-	"categories": ["productivity", "tags"],
+	"keywords": [
+		"eisenhower",
+		"gtd",
+		"urgent",
+		"important"
+	],
+	"categories": [
+		"productivity",
+		"tags"
+	],
 	"screenshots": [],
 	"icons": {}
 }
